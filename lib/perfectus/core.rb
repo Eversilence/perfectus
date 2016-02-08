@@ -6,16 +6,18 @@ require 'launchy'
 
 module Perfectus
   class Core
-    OUTPUT_DIR = "output"
+    OUTPUT_DIR = "perfectus_output"
 
     def initialize
       Dir.mkdir(OUTPUT_DIR) unless Dir.exist?(OUTPUT_DIR)
 
       rails_best_practices
+      metric_fu
       rubycritic
     end
 
     private
+    
     def rubycritic
       options = {
           mode: nil,

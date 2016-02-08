@@ -23,10 +23,11 @@ Gem::Specification.new do |spec|
   end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  spec.executables   = spec.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rubycritic"
+  spec.add_dependency "metric_fu"
   spec.add_dependency "rails_best_practices"
 
   spec.add_development_dependency "bundler", "~> 1.11"
